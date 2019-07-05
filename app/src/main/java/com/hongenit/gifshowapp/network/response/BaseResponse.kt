@@ -1,4 +1,4 @@
-package com.hongenit.gifshowapp.network
+package com.hongenit.gifshowapp.network.response
 
 /**
  * 请求响应的基类，这里封装了所有请求都必须会响应的参数，status和msg。

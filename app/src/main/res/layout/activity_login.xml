@@ -12,25 +12,4 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <ImageButton
-            android:id="@+id/ibSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:srcCompat="@mipmap/ic_launcher" />
-
-        <ImageButton
-            android:id="@+id/ibSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:visibility="visible"
-            app:srcCompat="@mipmap/ic_launcher" />
-    </LinearLayout>
-
 </LinearLayout>

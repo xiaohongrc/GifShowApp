@@ -3,7 +3,9 @@ package com.hongenit.gifshowapp.network
 
 import com.google.gson.GsonBuilder
 import com.hongenit.gifshowapp.GlobalParam
+import com.hongenit.gifshowapp.network.response.BaseResponse
 import com.hongenit.gifshowapp.util.Utility
+import com.hongenit.gifshowapp.util.logVerbose
 import okhttp3.FormBody
 import okhttp3.Headers
 import okhttp3.OkHttpClient
@@ -18,6 +20,7 @@ import java.util.concurrent.TimeUnit
  */
 abstract class Request {
 
+    private val TAG: String = "Request"
     private lateinit var okHttpClient: OkHttpClient
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
@@ -99,7 +102,7 @@ abstract class Request {
                         } else {
                             ""
                         }
-//                        logVerbose(LoggingInterceptor.TAG, result)
+                        logVerbose(TAG, result)
                         val gson = GsonBuilder().disableHtmlEscaping().create()
                         val responseModel = gson.fromJson(result, requestModel)
                         response.close()

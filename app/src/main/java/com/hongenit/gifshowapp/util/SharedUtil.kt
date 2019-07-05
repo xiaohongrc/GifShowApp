@@ -20,7 +20,8 @@ object SharedUtil {
      */
     fun save(key: String, value: Boolean) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.putBoolean(key, value)
         editor.apply()
     }
@@ -34,7 +35,8 @@ object SharedUtil {
      */
     fun save(key: String, value: Float) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.putFloat(key, value)
         editor.apply()
     }
@@ -48,7 +50,8 @@ object SharedUtil {
      */
     fun save(key: String, value: Int) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.putInt(key, value)
         editor.apply()
     }
@@ -62,7 +65,8 @@ object SharedUtil {
      */
     fun save(key: String, value: Long) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.putLong(key, value)
         editor.apply()
     }
@@ -76,7 +80,8 @@ object SharedUtil {
      */
     fun save(key: String, value: String) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.putString(key, value)
         editor.apply()
     }
@@ -141,9 +146,9 @@ object SharedUtil {
      * 如果读取不到值，返回的默认值
      * @return String类型的值，如果读取不到，则返回默认值
      */
-    fun read(key: String, defValue: String): String? {
+    fun read(key: String, defValue: String): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getString(key, defValue)
+        return prefs.getString(key, defValue) ?: defValue
     }
 
     /**
@@ -164,7 +169,8 @@ object SharedUtil {
      */
     fun clear(key: String) {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.remove(key)
         editor.apply()
     }
@@ -174,7 +180,8 @@ object SharedUtil {
      */
     fun clearAll() {
         val editor = PreferenceManager.getDefaultSharedPreferences(
-                GlobalParam.context).edit()
+            GlobalParam.context
+        ).edit()
         editor.clear()
         editor.apply()
     }

@@ -1,5 +1,7 @@
 package com.hongenit.gifshowapp.network
 
+import com.hongenit.gifshowapp.network.response.BaseResponse
+
 /**
  * 网络请求响应的回调接口。
  *

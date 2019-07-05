@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GifShowApp</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
 </resources>

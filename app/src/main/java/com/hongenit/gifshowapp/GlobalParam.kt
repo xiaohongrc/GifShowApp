@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
+import com.hongenit.gifshowapp.util.UserUtil
 import com.hongenit.gifshowapp.util.logWarn
 
 /**
@@ -16,8 +17,8 @@ import com.hongenit.gifshowapp.util.logWarn
 @SuppressLint("StaticFieldLeak")
 object GlobalParam {
 
-    private val TAG: String = "GlobalParam"
-    val isDebug = true
+    private const val TAG: String = "GlobalParam"
+    const val isDebug = true
     lateinit var handler: Handler
     lateinit var context: Context
         private set
@@ -50,5 +51,33 @@ object GlobalParam {
         if (applicationInfo == null) return ""
         return applicationInfo.metaData.getString(key)
     }
+
+
+    // 是否登录
+    fun isLogin(): Boolean {
+        return UserUtil.userId.isNotEmpty() && UserUtil.token.isNotEmpty()
+    }
+
+
+    fun saveLoginStatus(userId: String, token: String) {
+        UserUtil.saveUserId(userId)
+        UserUtil.saveToken(token)
+    }
+
+    // 保存我的信息
+    fun saveUserInfo(user: User) {
+        UserUtil.saveAvatar(user.avatar)
+        UserUtil.saveGender(user.gender)
+        UserUtil.saveDescription(user.description)
+        UserUtil.saveNickname(user.nickname)
+        UserUtil.saveBirthday(user.birthday)
+    }
+
+    // 退出登录，清空登录状态
+    fun logOut() {
+        UserUtil.saveUserId(null)
+        UserUtil.saveToken(null)
+    }
+
 
 }

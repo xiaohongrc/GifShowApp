@@ -1,23 +1,23 @@
 package com.hongenit.gifshowapp.network.request
 
-import com.hongenit.gifshowapp.network.NetworkConst
 import com.hongenit.gifshowapp.network.Callback
+import com.hongenit.gifshowapp.network.NetworkConst
 import com.hongenit.gifshowapp.network.Request
-import com.hongenit.gifshowapp.network.response.SignUpBaseResponse
+import com.hongenit.gifshowapp.network.response.SignInResponse
 
 /**
  * Created by hongenit on 2019/6/30.
  * desc:
  */
-class SignUpRequest : Request() {
+class SignInRequest : Request() {
     private var email: String = ""
     private var pwd: String = ""
-    fun email(email: String): SignUpRequest {
+    fun email(email: String): SignInRequest {
         this.email = email
         return this
     }
 
-    fun pwd(pwd: String): SignUpRequest {
+    fun pwd(pwd: String): SignInRequest {
         this.pwd = pwd
         return this
     }
@@ -38,10 +38,10 @@ class SignUpRequest : Request() {
     }
 
     override fun listen(callback: Callback?) {
-        inFlight(SignUpBaseResponse::class.java)
+        inFlight(SignInResponse::class.java)
         setListener(callback)
     }
 
-    private val URL = NetworkConst.BASE_URL + "user/regist"
+    private val URL = NetworkConst.BASE_URL + "user/login"
 
 }

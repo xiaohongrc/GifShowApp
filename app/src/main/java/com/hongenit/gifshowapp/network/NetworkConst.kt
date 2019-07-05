@@ -16,12 +16,25 @@ interface NetworkConst {
 
         const val PWD = "pwd"
 
+        const val TOKEN = "token"
+
+        const val USER_ID = "user_id"
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+        /*  ------------------- */
         const val OPEN_SPACE = 1
 
         const val PRIVATE_SPACE = 2
@@ -35,7 +48,6 @@ interface NetworkConst {
 
         const val CLIENT_CHANNEL = "channel"
 
-        const val TOKEN = "t"
 
         const val NUMBER = "number"
 
@@ -87,7 +99,6 @@ interface NetworkConst {
 
         const val LAST_COMMENT = "last_comment"
 
-        const val USER_ID = "user_id"
 
         const val USER = "user"
 
