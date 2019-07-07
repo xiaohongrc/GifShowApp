@@ -6,9 +6,9 @@ import android.os.Bundle
 import com.hongenit.gifshowapp.network.Callback
 import com.hongenit.gifshowapp.network.response.BaseResponse
 import com.hongenit.gifshowapp.network.response.FetchMyInfo
+import com.hongenit.gifshowapp.network.response.UpdateNicknameResponse
 import com.hongenit.gifshowapp.util.UserUtil
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.StringBuilder
 
 
 class MainActivity : BaseActivity() {
@@ -27,13 +27,32 @@ class MainActivity : BaseActivity() {
         FetchMyInfo.getResponse(UserUtil.userId, UserUtil.token, object : Callback {
             override fun onResponse(baseResponse: BaseResponse) {
                 val signUser = (baseResponse as FetchMyInfo).signUser
-                GlobalParam.saveUserInfo(signUser)
-                refreshUserInfo(signUser)
+                if (signUser.nickname.isNullOrEmpty()) {
+                    // 设置昵称
+                    updateNickname()
 
+                } else {
+                    refreshUserInfo(signUser)
+                }
+                GlobalParam.saveUserInfo(signUser)
             }
 
             override fun onFailure(e: Exception) {
 
+            }
+
+        })
+    }
+
+    private fun updateNickname() {
+        UpdateNicknameResponse.getResponse(UserUtil.userId,UserUtil.token,UserUtil.nickname,object : Callback{
+            override fun onResponse(baseResponse: BaseResponse) {
+                val user = (baseResponse as UpdateNicknameResponse).signUser
+                GlobalParam.saveUserInfo(user)
+            }
+
+            override fun onFailure(e: Exception) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })

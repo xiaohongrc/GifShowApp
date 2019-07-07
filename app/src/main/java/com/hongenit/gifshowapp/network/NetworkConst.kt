@@ -20,6 +20,8 @@ interface NetworkConst {
 
         const val USER_ID = "user_id"
 
+        const val NICKNAME = "nickname"
+
 
 
 
@@ -38,7 +40,6 @@ interface NetworkConst {
         const val OPEN_SPACE = 1
 
         const val PRIVATE_SPACE = 2
-        const val UID = "u"
 
         const val DEVICE_NAME = "device"
 
@@ -67,7 +68,7 @@ interface NetworkConst {
 
         const val ACCESS_TOKEN = "access_token"
 
-        const val NICKNAME = "nickname"
+
 
         const val CODE = "code"
 

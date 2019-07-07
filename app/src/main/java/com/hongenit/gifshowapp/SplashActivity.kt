@@ -15,6 +15,7 @@ import com.hongenit.gifshowapp.account.LoginActivity
 class SplashActivity : BaseActivity() {
 
     /**
+     *
      * 记录进入SplashActivity的时间。
      */
     var enterTime: Long = 0
@@ -43,6 +44,7 @@ class SplashActivity : BaseActivity() {
 
     /** 初始化。*/
     private fun startInit() {
+        forwardToNextActivity()
 
     }
 
@@ -69,7 +71,7 @@ class SplashActivity : BaseActivity() {
                 SystemClock.sleep(MIN_WAIT_TIME - timeSpent)
             }
             runOnUiThread {
-                if (GlobalParam.isLogin()) {
+                if (!GlobalParam.isLogin()) {
                     MainActivity.actionStart(this)
                 } else {
                     LoginActivity.actionStart(this)
@@ -81,12 +83,13 @@ class SplashActivity : BaseActivity() {
 
     companion object {
 
+
         private const val TAG = "SplashActivity"
 
         /**
          * 应用程序在闪屏界面最短的停留时间。
          */
-        const val MIN_WAIT_TIME = 2000
+        const val MIN_WAIT_TIME = 200
 
         /**
          * 应用程序在闪屏界面最长的停留时间。

@@ -13,7 +13,7 @@ interface SharedPrefConst {
         companion object {
             const val UID = "uid"
 
-            const val TOKEN = "uid"
+            const val TOKEN = "token"
 
             const val NICKNAME = "nickname"
 
