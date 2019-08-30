@@ -3,12 +3,11 @@ package com.hongenit.gifshowapp.account
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.WindowManager
 import com.hongenit.gifshowapp.BaseActivity
-import com.hongenit.gifshowapp.MainActivity
 import com.hongenit.gifshowapp.R
-import kotlinx.android.synthetic.main.activity_login.*
+import com.hongenit.gifshowapp.util.GlobalUtil
+import com.hongenit.gifshowapp.util.SharedPrefConst
+import com.hongenit.gifshowapp.util.SharedUtil
 
 /**
  * Created by hongenit on 2019/6/29.
@@ -34,7 +33,13 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        showSignIn()
+        GlobalUtil.setStatusBarFullTransparent(this)
+        // 如果注册过则显示登录页
+        if (SharedUtil.read(SharedPrefConst.User.HAD_LOGIN, false)) {
+            showSignIn()
+        } else {
+            showSignUp()
+        }
 
     }
 
@@ -54,6 +59,8 @@ class LoginActivity : BaseActivity() {
         transaction.commit()
     }
 
+
+    // 显示注册页面。
     fun showSignUp() {
         val transaction = supportFragmentManager.beginTransaction()
         if (mSignUpFragment == null) {

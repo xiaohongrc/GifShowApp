@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@color/bg_page"
-              android:gravity="center">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/colorPrimary">
 
 
     <TextView
@@ -13,93 +11,102 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginTop="50dp"
             android:text="@string/sign_in"
             android:textStyle="bold"
-            android:textColor="#ffffffff"
+            android:textColor="@color/white"
             android:textSize="28sp"
     />
 
 
-    <!--账号-->
-    <android.support.design.widget.TextInputLayout
-            android:id="@+id/phoneInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="35dp"
-            app:errorTextAppearance="@style/EditTextErrorAppearance">
-
-        <android.support.design.widget.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Account"
-                android:textColor="@color/text_account_info"
-                android:imeOptions="actionGo"
-                android:inputType="textEmailAddress|phone"
-                android:maxLength="20"
-                android:maxLines="1"
-        />
-
-    </android.support.design.widget.TextInputLayout>
-
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="35dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="133dp"
+            android:padding="35dp"
+            android:background="@drawable/bg_account_login"
+    >
 
+
+        <!--账号-->
         <android.support.design.widget.TextInputLayout
-                android:id="@+id/verifyCodeLayout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
+                android:theme="@style/CustomAppTheme_textInputLayout"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
                 app:errorTextAppearance="@style/EditTextErrorAppearance">
 
             <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etPwd"
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="Account"
+                    android:textColor="@color/text_account_info"
                     android:imeOptions="actionGo"
-                    android:inputType="textPassword"
-                    android:textColorHint="#44bb0b"
+                    android:inputType="textEmailAddress"
                     android:maxLength="20"
                     android:maxLines="1"
-                    android:textColor="@color/text_account_info"/>
-
+            />
 
         </android.support.design.widget.TextInputLayout>
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+        >
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:theme="@style/CustomAppTheme_textInputLayout"
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/EditTextErrorAppearance">
+
+                <android.support.design.widget.TextInputEditText
+                        android:id="@+id/etPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:imeActionLabel="@string/sign_in"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:textColorHint="#44bb0b"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/text_account_info"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="@string/sign_in"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:background="@drawable/phone_login_button_bg"/>
+
+        <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="35dp"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:text="@string/sign_up"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/text_account_info"
+                android:visibility="visible"
+        />
+
+
     </LinearLayout>
-
-    <Button
-            android:id="@+id/btnSignIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="35dp"
-            android:text="Sign In"
-            android:textColor="@color/text_account_info"
-            android:textSize="16sp"
-            android:background="@drawable/phone_login_button_bg"/>
-
-
-    <TextView
-            android:id="@+id/tvSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:text="@string/sign_up"
-            android:layout_marginEnd="50dp"
-            android:textColor="@color/text_account_info"
-            android:visibility="visible"
-           />
-
-
-</LinearLayout>
+</FrameLayout>

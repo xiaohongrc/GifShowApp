@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <ViewStub
+            android:id="@+id/loadErrorView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/load_error_view" />
+
+    <ViewStub
+            android:id="@+id/noContentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/no_content_view" />
+
+
+    <ViewStub
+            android:id="@+id/noContentViewWithButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/no_content_view_with_button" />
+
+
+</FrameLayout>

@@ -16,8 +16,8 @@ class FetchMyInfo : BaseResponse() {
     var signUser = User()
 
     companion object {
-        fun getResponse(userId: String, token: String, callback: Callback) {
-            MyInfoRequest(userId, token)
+        fun getResponse( callback: Callback) {
+            MyInfoRequest()
                 .listen(callback)
         }
     }

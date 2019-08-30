@@ -4,13 +4,13 @@ import com.hongenit.gifshowapp.network.NetworkConst
 import com.hongenit.gifshowapp.network.Callback
 import com.hongenit.gifshowapp.network.Request
 import com.hongenit.gifshowapp.network.response.FetchMyInfo
-import com.hongenit.gifshowapp.network.response.SignUpBaseResponse
+import com.hongenit.gifshowapp.util.UserModel
 
 /**
  * Created by hongenit on 2019/6/30.
  * desc:
  */
-class MyInfoRequest(var userId: String, var token: String) : Request() {
+class MyInfoRequest : Request() {
 
     override fun url(): String {
         return URL
@@ -22,8 +22,8 @@ class MyInfoRequest(var userId: String, var token: String) : Request() {
 
     override fun params(): Map<String, String>? {
         val params = HashMap<String, String>()
-        params[NetworkConst.USER_ID] = userId
-        params[NetworkConst.TOKEN] = token
+        params[NetworkConst.USER_ID] = UserModel.userId
+        params[NetworkConst.TOKEN] = UserModel.token
         return params
     }
 

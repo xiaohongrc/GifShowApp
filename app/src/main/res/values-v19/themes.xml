@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomAppTheme_textinputLayout" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorAccent">#3498db</item>
+        <item name="android:textColorHint">@color/text_account_info</item>
+        <item name="colorControlNormal">@color/light_grey</item>
+        <item name="colorControlActivated">#ff0000</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

@@ -27,6 +27,8 @@ interface SharedPrefConst {
 
             const val GENDER = "gender"
 
+            const val HAD_LOGIN = "had_login"
+
         }
 
     }

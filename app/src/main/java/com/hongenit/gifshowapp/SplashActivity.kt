@@ -5,6 +5,7 @@ import android.os.SystemClock
 import android.text.TextUtils
 import android.view.View
 import com.hongenit.gifshowapp.account.LoginActivity
+import com.hongenit.gifshowapp.util.UserModel
 
 /**
  * 闪屏Activity界面，在这里进行程序初始化操作。
@@ -71,7 +72,7 @@ class SplashActivity : BaseActivity() {
                 SystemClock.sleep(MIN_WAIT_TIME - timeSpent)
             }
             runOnUiThread {
-                if (!GlobalParam.isLogin()) {
+                if (UserModel.isLogin()) {
                     MainActivity.actionStart(this)
                 } else {
                     LoginActivity.actionStart(this)

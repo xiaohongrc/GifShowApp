@@ -9,8 +9,30 @@ package com.hongenit.gifshowapp.network
 interface NetworkConst {
 
     companion object {
+        var isDebug = false
 
-        const val BASE_URL = "http://192.168.3.193:8080/gif_show_war_exploded/"
+        var BASE_URL = getBaseUrl()
+
+        private fun getBaseUrl(): String {
+            return if (isDebug) BASE_URL_DEBUG else BASE_URL_FORMAL
+        }
+
+
+        // 存储头像的域名
+        const val DOMAIN_OF_AVATAR = "http://pw2p0ejhr.bkt.clouddn.com/"
+
+        const val SERVER_ADDR_HOME = "http://192.168.0.103:8080/"
+
+        const val SERVER_ADDR_HOT_SPOT = "http://192.168.43.198:8080/"
+
+        private const val SERVER_ADDR_DEBUG = "http://192.168.3.193:8080/"
+
+        private const val BASE_URL_DEBUG = SERVER_ADDR_DEBUG + "gif_show_war_exploded/"
+
+        const val SERVER_ADDR = "http://47.99.124.250:8080/"
+
+        private const val BASE_URL_FORMAL = "http://47.99.124.250:8080/gif_show-1.0-SNAPSHOT/"
+
 
         const val ACCOUNT = "account"
 
@@ -22,18 +44,21 @@ interface NetworkConst {
 
         const val NICKNAME = "nickname"
 
+        const val PAGE = "page"
 
+        const val PAGE_SIZE = "page_size"
 
+        const val FEED_ID = "feed_id"
 
+        const val CONTENT = "content"
 
+        const val COLLECT_STATUS = "collect_status"
 
+        const val FILE_KEY = "file_key"
 
+        const val DESCRIPTION = "description"
 
-
-
-
-
-
+        const val AVATAR = "avatar"
 
 
         /*  ------------------- */
@@ -69,7 +94,6 @@ interface NetworkConst {
         const val ACCESS_TOKEN = "access_token"
 
 
-
         const val CODE = "code"
 
         const val URI = "uri"
@@ -82,7 +106,6 @@ interface NetworkConst {
 
         const val GIF_MD5 = "gif_md5"
 
-        const val CONTENT = "content"
 
         const val IMG_WIDTH = "img_width"
 
@@ -107,11 +130,6 @@ interface NetworkConst {
 
         const val FOLLOWING_ID = "following_id"
 
-        const val PAGE = "page"
-
-        const val DESCRIPTION = "desp"
-
-        const val AVATAR = "avatar"
 
         const val BG_IMAGE = "bg"
 
@@ -120,6 +138,34 @@ interface NetworkConst {
         const val KEYWORD = "keyword"
 
         const val REASON = "reason"
+
+
+        // 状态码常量
+        // 成功
+        val STATUS_OK = 0
+
+        // 正常失败
+        val STATUS_FAIL = 10000
+
+        // 没有数据
+        val STATUS_NO_DATA = 10001
+
+        // 操作数据库失败
+        val STATUS_OPERATE_DB_FAIL = 10002
+
+        val STATUS_TOKEN_INVALID = 10003
+
+        // 账号相关
+        val STATUS_REGIST_FAIL = 11001
+        val STATUS_ACCOUNT_EXIST = 11002
+        val STATUS_NICKNAME_EXIST = 11003
+        val STATUS_USER_NOT_EXIST = 11004
+        val STATUS_UPDATE_FAIL = 11005
+        val STATUS_LOGIN_FAIL = 11006
+        val STATUS_USER_NICKNAME_IS_NULL = 11008
+
+
+
 
     }
 

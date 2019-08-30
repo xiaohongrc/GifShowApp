@@ -1,15 +1,15 @@
 package com.hongenit.gifshowapp.util
 
+import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.hongenit.gifshowapp.GlobalParam
 
 /**
  * SharedPreferences工具类，提供简单的封装接口，简化SharedPreferences的用法。
  *
- * @author guolin
- * @since 17/2/15
  */
 object SharedUtil {
+    val mPref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
 
     /**
      * 存储boolean类型的键值对到SharedPreferences文件当中。
@@ -19,11 +19,8 @@ object SharedUtil {
      * 存储的值
      */
     fun save(key: String, value: Boolean) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.putBoolean(key, value)
-        editor.apply()
+
+        mPref.edit().putBoolean(key, value).apply()
     }
 
     /**
@@ -34,11 +31,7 @@ object SharedUtil {
      * 存储的值
      */
     fun save(key: String, value: Float) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.putFloat(key, value)
-        editor.apply()
+        mPref.edit().putFloat(key, value).apply()
     }
 
     /**
@@ -49,11 +42,7 @@ object SharedUtil {
      * 存储的值
      */
     fun save(key: String, value: Int) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.putInt(key, value)
-        editor.apply()
+        mPref.edit().putInt(key, value).apply()
     }
 
     /**
@@ -64,11 +53,7 @@ object SharedUtil {
      * 存储的值
      */
     fun save(key: String, value: Long) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.putLong(key, value)
-        editor.apply()
+        mPref.edit().putLong(key, value).apply()
     }
 
     /**
@@ -79,11 +64,7 @@ object SharedUtil {
      * 存储的值
      */
     fun save(key: String, value: String) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.putString(key, value)
-        editor.apply()
+        mPref.edit().putString(key, value).apply()
     }
 
     /**
@@ -95,8 +76,8 @@ object SharedUtil {
      * @return boolean类型的值，如果读取不到，则返回默认值
      */
     fun read(key: String, defValue: Boolean): Boolean {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getBoolean(key, defValue)
+
+        return mPref.getBoolean(key, defValue)
     }
 
     /**
@@ -108,8 +89,8 @@ object SharedUtil {
      * @return float类型的值，如果读取不到，则返回默认值
      */
     fun read(key: String, defValue: Float): Float {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getFloat(key, defValue)
+
+        return mPref.getFloat(key, defValue)
     }
 
     /**
@@ -121,8 +102,8 @@ object SharedUtil {
      * @return int类型的值，如果读取不到，则返回默认值
      */
     fun read(key: String, defValue: Int): Int {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getInt(key, defValue)
+
+        return mPref.getInt(key, defValue)
     }
 
     /**
@@ -134,8 +115,8 @@ object SharedUtil {
      * @return long类型的值，如果读取不到，则返回默认值
      */
     fun read(key: String, defValue: Long): Long {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getLong(key, defValue)
+
+        return mPref.getLong(key, defValue)
     }
 
     /**
@@ -147,8 +128,8 @@ object SharedUtil {
      * @return String类型的值，如果读取不到，则返回默认值
      */
     fun read(key: String, defValue: String): String {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.getString(key, defValue) ?: defValue
+
+        return mPref.getString(key, defValue) ?: defValue
     }
 
     /**
@@ -158,8 +139,8 @@ object SharedUtil {
      * @return 键已存在返回true，否则返回false。
      */
     operator fun contains(key: String): Boolean {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(GlobalParam.context)
-        return prefs.contains(key)
+
+        return mPref.contains(key)
     }
 
     /**
@@ -168,22 +149,14 @@ object SharedUtil {
      * 想要清除的键
      */
     fun clear(key: String) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.remove(key)
-        editor.apply()
+        mPref.edit().remove(key).apply()
     }
 
     /**
      * 将SharedPreferences文件中存储的所有值清除。
      */
     fun clearAll() {
-        val editor = PreferenceManager.getDefaultSharedPreferences(
-            GlobalParam.context
-        ).edit()
-        editor.clear()
-        editor.apply()
+        mPref.edit().clear().apply()
     }
 
 }

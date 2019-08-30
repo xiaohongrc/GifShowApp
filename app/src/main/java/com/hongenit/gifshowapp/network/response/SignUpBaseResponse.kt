@@ -12,7 +12,7 @@ import com.hongenit.gifshowapp.network.request.SignUpRequest
 class SignUpBaseResponse : BaseResponse() {
 
     @SerializedName("user_id")
-    var user_id = ""
+    var user_id = 0
 
     @SerializedName("token")
     var token = ""

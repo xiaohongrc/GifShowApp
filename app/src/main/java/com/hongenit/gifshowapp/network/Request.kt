@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder
 import com.hongenit.gifshowapp.GlobalParam
 import com.hongenit.gifshowapp.network.response.BaseResponse
 import com.hongenit.gifshowapp.util.Utility
-import com.hongenit.gifshowapp.util.logVerbose
+import com.hongenit.gifshowapp.extension.logVerbose
 import okhttp3.FormBody
 import okhttp3.Headers
 import okhttp3.OkHttpClient
@@ -79,8 +79,10 @@ abstract class Request {
         val requestBuilder = okhttp3.Request.Builder()
         if (method() == GET && getParams() != null) {
             requestBuilder.url(urlWithParam())
+            logVerbose(TAG, "urlWithParam = ${urlWithParam()}")
         } else {
             requestBuilder.url(url())
+            logVerbose(TAG, "url = ${url()}")
         }
         requestBuilder.headers(headers(Headers.Builder()).build())
         when {
