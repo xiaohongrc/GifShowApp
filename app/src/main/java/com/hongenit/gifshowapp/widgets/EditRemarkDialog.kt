@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.dialog_edit_remark.*
  * Created by Xiaohong on 2019/4/16.
  * desc:
  */
-class EditRemarkDialog(context: Context, val oldName: String) : Dialog(context, R.style.Dialog_FS),
+class EditRemarkDialog(context: Context, val oldName: String?) : Dialog(context, R.style.Dialog_FS),
     View.OnClickListener, TextWatcher {
     override fun afterTextChanged(s: Editable?) {
         val empty = TextUtils.isEmpty(et_change_name.text.toString())
@@ -61,9 +61,11 @@ class EditRemarkDialog(context: Context, val oldName: String) : Dialog(context, 
         et_change_name.requestFocus()
         et_change_name.addTextChangedListener(this)
         et_change_name.setSelection(0)
-        et_change_name.setText(oldName)
-        val maxNameLength = context.resources.getInteger(R.integer.username_max_length)
-        et_change_name.setSelection(if (oldName.length > maxNameLength) maxNameLength else oldName.length)
+        if (oldName != null) {
+            et_change_name.setText(oldName)
+            val maxNameLength = context.resources.getInteger(R.integer.username_max_length)
+            et_change_name.setSelection(if (oldName.length > maxNameLength) maxNameLength else oldName.length)
+        }
         setCanceledOnTouchOutside(true)
     }
 

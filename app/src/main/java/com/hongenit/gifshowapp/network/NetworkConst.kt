@@ -9,7 +9,7 @@ package com.hongenit.gifshowapp.network
 interface NetworkConst {
 
     companion object {
-        var isDebug = false
+        var isDebug = true
 
         var BASE_URL = getBaseUrl()
 
@@ -163,8 +163,7 @@ interface NetworkConst {
         val STATUS_UPDATE_FAIL = 11005
         val STATUS_LOGIN_FAIL = 11006
         val STATUS_USER_NICKNAME_IS_NULL = 11008
-
-
+        val STATUS_USER_NOT_LOGIN = 11009
 
 
     }

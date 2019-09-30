@@ -83,7 +83,6 @@
 
 
     <!-- 登录与注册 -->
-    <string name="login">登录</string>
     <string name="qq_login">QQ登录</string>
     <string name="wechat_login">微信登录</string>
     <string name="weibo_login">微博登录</string>
@@ -368,6 +367,8 @@
     <string name="account_is_too_short">账户名必须6个字符以上</string>
     <string name="account_is_illegal">账号包含非法字符</string>
     <string name="str_exit_tap_again">再次点击退出</string>
-
+    <string name="login_then_collect">登录后才能收藏</string>
+    <string name="login_tip">请点击下方按钮登录</string>
+    <string name="collect_login_tip">请先登录，然后查看已收藏的动画</string>
 
 </resources>

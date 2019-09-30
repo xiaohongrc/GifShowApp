@@ -72,11 +72,11 @@ class SplashActivity : BaseActivity() {
                 SystemClock.sleep(MIN_WAIT_TIME - timeSpent)
             }
             runOnUiThread {
-                if (UserModel.isLogin()) {
-                    MainActivity.actionStart(this)
-                } else {
-                    LoginActivity.actionStart(this)
-                }
+                //                if (UserModel.isLogin()) {
+                MainActivity.actionStart(this)
+//                } else {
+//                    LoginActivity.actionStart(this)
+//                }
                 finish()
             }
         }

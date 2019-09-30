@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -23,6 +25,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.hongenit.gifshowapp.BaseActivity
 import com.hongenit.gifshowapp.GlobalParam
 import com.hongenit.gifshowapp.R
+import com.hongenit.gifshowapp.account.LoginActivity
 import com.hongenit.gifshowapp.bean.WaterFallFeed
 import com.hongenit.gifshowapp.collect.CollectGifResponse
 import com.hongenit.gifshowapp.comment.Comment
@@ -42,6 +45,7 @@ import com.hongenit.gifshowapp.util.imageloader.IImageLoader
 import com.hongenit.gifshowapp.util.imageloader.MyImageLoader
 import com.hongenit.gifshowapp.util.imageloader.glide.ProgressInterceptor
 import com.hongenit.gifshowapp.util.imageloader.glide.ProgressListener
+import com.hongenit.gifshowapp.widgets.SystemDialog
 import kotlinx.android.synthetic.main.activity_feed_detail.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -410,7 +414,6 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
 
             override fun onAnimationEnd(animation: Animator?) {
                 likeAnimView?.visibility = View.GONE
-
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -422,8 +425,25 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
         })
 
         favoriteLayout.setOnClickListener {
-            if (isFeedDetailLoaded) {
+            if (UserModel.isLogin()) {
                 likeFeed()
+            } else {
+
+                val dialogBtnListener =
+                    DialogInterface.OnClickListener { dialog, which ->
+                        when (which) {
+                            DialogInterface.BUTTON_POSITIVE -> {
+                                LoginActivity.actionStart(this)
+                                finish()
+                            }
+
+                            DialogInterface.BUTTON_NEGATIVE -> {
+                                dialog.dismiss()
+                            }
+                        }
+                    }
+                SystemDialog.Builder(this).setMessage(R.string.login_then_collect)
+                    .setButtonListener(dialogBtnListener, dialogBtnListener).build().show()
 
             }
         }
@@ -434,6 +454,9 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
      * 对Feed进行点赞或取消点赞。
      */
     private fun likeFeed() {
+        if (!isFeedDetailLoaded) {
+            return
+        }
         var likesCount = mFeed.likesCount
         val event = LikeFeedEvent()
         event.from = LikeFeedEvent.FROM_FEED_DETAIL

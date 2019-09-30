@@ -30,7 +30,11 @@ class MeFragment : BaseFragment() {
     private var mImageRequest: Int = 0
     private val REQUEST_ICON = 1
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return layoutInflater.inflate(R.layout.fragment_me, container, false)
     }
 
@@ -55,11 +59,23 @@ class MeFragment : BaseFragment() {
 
         tv_logout.setOnClickListener {
             println("logout")
-            showLogoutDialog()
+
+            if (UserModel.isLogin()) {
+                showLogoutDialog()
+            } else {
+                forwardAccountPage()
+            }
         }
 
         fillUserInfo()
 
+    }
+
+    private fun forwardAccountPage() {
+        activity?.let {
+            LoginActivity.actionStart(it)
+            it.finish()
+        }
     }
 
 
@@ -75,15 +91,28 @@ class MeFragment : BaseFragment() {
     private fun fillUserInfo() {
         val signInUser = UserModel.getSignInUser()
         // 加载头像
-        MyImageLoader.displayRoundIcon(ivAvatar, signInUser.avatar, resources.getDrawable(R.drawable.icon_head_default))
+        MyImageLoader.displayRoundIcon(
+            ivAvatar,
+            signInUser.avatar,
+            resources.getDrawable(R.drawable.icon_head_default)
+        )
         // 昵称
         tvNickname.text = signInUser.nickname
 
         // 个人简介
         var description = signInUser.description
-        if (description.isNullOrEmpty()) {
-            description = getString(R.string.description_is_empty)
+
+        var loginBtnText = ""
+        if (UserModel.isLogin()) {
+            if (description.isNullOrEmpty()) {
+                description = getString(R.string.description_is_empty)
+            }
+            loginBtnText = getString(R.string.logout)
+        } else {
+            description = getString(R.string.login_tip)
+            loginBtnText = getString(R.string.sign_in)
         }
+        tv_logout.text = loginBtnText
         tvSelfIntro.text = description
 
         //        fillUserGenderAge(signInUser)
@@ -93,20 +122,12 @@ class MeFragment : BaseFragment() {
     private fun showLogoutDialog() {
         val builder = AlertDialog.Builder(activity, R.style.AppAlertDialogStyle)
         builder.setTitle(R.string.attention).setMessage(R.string.logout_message)
-            .setPositiveButton(R.string.logout, object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    doLogout()
-                }
-            }).setNegativeButton(R.string.cancel, null).show()
-    }
-
-    fun doLogout() {
-        UserModel.logOut()
-        activity?.let {
-            LoginActivity.actionStart(it)
-            it.finish()
-        }
-
+            .setPositiveButton(
+                R.string.logout
+            ) { dialog, which ->
+                UserModel.logOut()
+                forwardAccountPage()
+            }.setNegativeButton(R.string.cancel, null).show()
     }
 
 
@@ -114,15 +135,17 @@ class MeFragment : BaseFragment() {
     private fun changeIcon() {
         mImageRequest = REQUEST_ICON
 
-        handlePermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), object : PermissionListener {
-            override fun onGranted() {
+        handlePermissions(
+            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            object : PermissionListener {
+                override fun onGranted() {
 //                showImageSourceChooseDialog(true)
-            }
+                }
 
-            override fun onDenied(deniedPermissions: List<String>) {
-                showToast(getString(R.string.no_permission_cant_continue))
-            }
-        })
+                override fun onDenied(deniedPermissions: List<String>) {
+                    showToast(getString(R.string.no_permission_cant_continue))
+                }
+            })
     }
 
 

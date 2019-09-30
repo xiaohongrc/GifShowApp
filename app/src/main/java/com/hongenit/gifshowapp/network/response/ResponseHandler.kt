@@ -55,7 +55,7 @@ object ResponseHandler {
         }
         val status = response.status
         when (status) {
-            NetworkConst.STATUS_TOKEN_INVALID,NetworkConst.STATUS_USER_NOT_EXIST  -> {
+            NetworkConst.STATUS_TOKEN_INVALID, NetworkConst.STATUS_USER_NOT_EXIST -> {
                 logWarn(TAG, "handleResponse: status code is $status")
                 UserModel.logOut()
                 showToastOnUiThread(GlobalUtil.getString(R.string.login_status_expired))
@@ -63,11 +63,6 @@ object ResponseHandler {
                 EventBus.getDefault().post(event)
                 return true
             }
-//            19000 -> {
-//                logWarn(TAG, "handleResponse: status code is 19000")
-//                showToastOnUiThread(GlobalUtil.getString(R.string.unknown_error))
-//                return true
-//            }
             else -> return false
         }
     }

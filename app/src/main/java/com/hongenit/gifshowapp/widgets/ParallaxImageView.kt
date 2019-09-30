@@ -21,7 +21,6 @@ import com.hongenit.gifshowapp.util.ColorUtils
 /**
  * Feed详情页用于展示GIF图的控件，支持Parallax偏移效果。
  *
- * @author guolin
  * @since 17/6/8
  */
 class ParallaxImageView(context: Context, attrs: AttributeSet?) : ImageView(context, attrs) {

@@ -83,7 +83,6 @@
 
 
     <!-- 登录与注册 -->
-    <string name="login">登录</string>
     <string name="qq_login">QQ登录</string>
     <string name="wechat_login">微信登录</string>
     <string name="weibo_login">微博登录</string>
@@ -368,6 +367,9 @@
     <string name="account_is_too_short">Account must more than 6 character</string>
     <string name="account_is_illegal">Account contains invalidate character</string>
     <string name="str_exit_tap_again">Tap again to exit</string>
+    <string name="login_then_collect">Please login first then you can collect</string>
+    <string name="login_tip">Please click login button below</string>
+    <string name="collect_login_tip">Please login first then collect gif</string>
 
 
 </resources>

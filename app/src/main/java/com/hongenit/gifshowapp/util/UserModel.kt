@@ -14,15 +14,19 @@ import org.greenrobot.eventbus.EventBus
  */
 object UserModel {
 
+
+    // 未登录时userid为0
+    const val NO_USER_ID = "0"
+
     var mUser: User = User()
 
-    var userId: String = ""
+    var userId: String = NO_USER_ID
 
     var token: String = ""
 
 
     fun initUserModel() {
-        userId = SharedUtil.read(SharedPrefConst.User.UID, "")
+        userId = SharedUtil.read(SharedPrefConst.User.UID, NO_USER_ID)
         mUser.user_id = userId
         token = SharedUtil.read(SharedPrefConst.User.TOKEN, "")
         mUser.token = token
@@ -102,7 +106,7 @@ object UserModel {
 
         EventBus.getDefault().post(UserInfoUpdateEvent())
 
-        logDebug("save user = ${user.toString()}")
+        logDebug("save user = $user")
     }
 
 
@@ -133,9 +137,9 @@ object UserModel {
 
     // 是否登录
     fun isLogin(): Boolean {
-        userId = SharedUtil.read(SharedPrefConst.User.UID, "")
+        userId = SharedUtil.read(SharedPrefConst.User.UID, NO_USER_ID)
         token = SharedUtil.read(SharedPrefConst.User.TOKEN, "")
-        return userId.isNotEmpty() && token.isNotEmpty()
+        return userId != NO_USER_ID && token.isNotEmpty()
     }
 
 }

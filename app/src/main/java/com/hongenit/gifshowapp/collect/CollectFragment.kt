@@ -1,5 +1,6 @@
 package com.hongenit.gifshowapp.collect
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -24,6 +25,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 import android.support.v7.widget.PagerSnapHelper
+import com.hongenit.gifshowapp.account.LoginActivity
 import com.hongenit.gifshowapp.extension.dp2px
 import com.hongenit.gifshowapp.network.NetworkConst
 import org.greenrobot.eventbus.EventBus
@@ -150,6 +152,11 @@ class CollectFragment : BaseGifsFragment(), LoadDataListener {
                 }
 
             }
+            if (adapter.itemCount > 0) {
+                hideNoContentView()
+            } else {
+                showNoContentView(getString(R.string.no_collect))
+            }
         } else if (messageEvent is ModifyUserInfoEvent) {
             if (messageEvent.modifyNickname || messageEvent.modifyAvatar) {
                 swipeRefresh.isRefreshing = true
@@ -213,7 +220,19 @@ class CollectFragment : BaseGifsFragment(), LoadDataListener {
                 isNoMoreData = true
                 activity.runOnUiThread {
                     feedList.clear()
-                    showNoContentView(getString(R.string.no_more_content))
+                    showNoContentView(getString(R.string.no_collect))
+                    adapter.notifyDataSetChanged()
+                    loadFinished()
+                }
+            } else if (status == NetworkConst.STATUS_USER_NOT_LOGIN) {
+                activity.runOnUiThread {
+                    feedList.clear()
+                    showNoContentViewWithButton(getString(R.string.login_tip),
+                        getString(R.string.sign_in),
+                        View.OnClickListener { v ->
+                            LoginActivity.actionStart(activity)
+                            activity.finish()
+                        })
                     adapter.notifyDataSetChanged()
                     loadFinished()
                 }
