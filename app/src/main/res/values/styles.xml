@@ -31,8 +31,8 @@
 
 
     <style name="MaterialButton">
-        <item name="colorControlHighlight">@color/colorPrimary</item>
-        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
     </style>
 
 

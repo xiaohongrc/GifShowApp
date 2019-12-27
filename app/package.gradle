@@ -1,0 +1,24 @@
+android {
+    flavorDimensions "default"
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.hongenit.gifshowapp"
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1001
+        versionName "1.0.01"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            // zipalign优化
+//            zipAlignEnabled true
+            // 移除无用的资源文件
+//            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}

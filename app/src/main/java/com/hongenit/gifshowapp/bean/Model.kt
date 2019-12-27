@@ -5,8 +5,6 @@ import org.litepal.crud.LitePalSupport
 /**
  * 所有网络通讯数据模型实体类的基类。
  *
- * @author guolin
- * @since 2018/4/27
  */
 abstract class Model : LitePalSupport() {
 

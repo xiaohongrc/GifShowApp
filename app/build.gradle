@@ -4,24 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.hongenit.gifshowapp"
-        minSdkVersion 18
-        targetSdkVersion 28
-        versionCode 1001
-        versionName "1.0.01"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply from: 'productFlavors.gradle'
+apply from: 'package.gradle'
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,9 +32,9 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.7.0'
     implementation 'com.google.firebase:firebase-core:15.0.2'
     implementation 'com.google.firebase:firebase-ads:15.0.1'
-    implementation 'com.umeng.sdk:common:latest.integration'
-    implementation 'com.umeng.sdk:analytics:latest.integration'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.umeng.umsdk:common:2.0.0'
 
 
 }

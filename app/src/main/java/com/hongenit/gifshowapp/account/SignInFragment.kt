@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.hongenit.gifshowapp.R
+import com.hongenit.gifshowapp.UmengEvent
 import com.hongenit.gifshowapp.extension.logDebug
 import com.hongenit.gifshowapp.extension.showToast
 import com.hongenit.gifshowapp.network.Callback
@@ -74,9 +75,11 @@ class SignInFragment : AccountBaseFragment() {
                 override fun onResponse(baseResponse: BaseResponse) {
                     val signInResponse = baseResponse as SignInResponse
                     if (signInResponse.status == BaseResponse.STATUS_OK && signInResponse.user_id > 0) {
-                        UserModel.saveLoginStatus(signInResponse.user_id.toString(), signInResponse.token)
+                        val userId = signInResponse.user_id.toString()
+                        UserModel.saveLoginStatus(userId, signInResponse.token)
                         onLoginSucceed()
                         logDebug("SignInResponse success")
+                        UmengEvent.signInSucceed(userId)
                     } else {
                         // 用户名或密码错误。
                         showToast(getString(R.string.error_account_pwd))

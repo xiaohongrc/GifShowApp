@@ -64,6 +64,7 @@
                             android:id="@+id/likes"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
+                            android:src="@drawable/ic_like"
                             android:layout_gravity="center_horizontal" />
 
                     <com.airbnb.lottie.LottieAnimationView
@@ -108,6 +109,7 @@
                         android:src="@drawable/ic_comment" />
 
                 <TextView
+                        android:id="@+id/commentsCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"

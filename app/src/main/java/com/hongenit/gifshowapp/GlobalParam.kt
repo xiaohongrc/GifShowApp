@@ -18,7 +18,6 @@ import com.hongenit.gifshowapp.extension.logWarn
 object GlobalParam {
 
     private const val TAG: String = "GlobalParam"
-    const val isDebug = true
     lateinit var handler: Handler
     lateinit var context: Context
         private set

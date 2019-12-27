@@ -29,17 +29,17 @@ class SystemDialog {
             mNegative = mContext.getString(R.string.cancel)
         }
 
-        fun setTitle(title: CharSequence): SystemDialog.Builder {
+        fun setTitle(title: CharSequence): Builder {
             mTitle = title
             return this
         }
 
-        fun setMessage(message: CharSequence): SystemDialog.Builder {
+        fun setMessage(message: CharSequence): Builder {
             mMessage = message
             return this
         }
 
-        fun setCancelable(cancelable: Boolean): SystemDialog.Builder {
+        fun setCancelable(cancelable: Boolean): Builder {
             this.cancelable = cancelable
             return this
         }
@@ -47,7 +47,7 @@ class SystemDialog {
         fun setPositive(
             positive: CharSequence,
             listener: DialogInterface.OnClickListener
-        ): SystemDialog.Builder {
+        ): Builder {
             mPositive = positive
             mPositiveListener = listener
             return this
@@ -56,38 +56,38 @@ class SystemDialog {
         fun setNegative(
             negative: CharSequence,
             listener: DialogInterface.OnClickListener
-        ): SystemDialog.Builder {
+        ): Builder {
             mNegativeListener = listener
             mNegative = negative
             return this
         }
 
-        fun setTitle(title: Int): SystemDialog.Builder {
+        fun setTitle(title: Int): Builder {
             return setTitle(mContext.getString(title))
         }
 
-        fun setMessage(message: Int): SystemDialog.Builder {
+        fun setMessage(message: Int): Builder {
             return setMessage(mContext.getString(message))
         }
 
         fun setPositive(
             positive: Int,
             listener: DialogInterface.OnClickListener
-        ): SystemDialog.Builder {
+        ): Builder {
             return setPositive(mContext.getString(positive), listener)
         }
 
         fun setNegative(
             negative: Int,
             listener: DialogInterface.OnClickListener
-        ): SystemDialog.Builder {
+        ): Builder {
             return setNegative(mContext.getString(negative), listener)
         }
 
         fun setButtonListener(
             positiveListener: DialogInterface.OnClickListener,
             negativeListener: DialogInterface.OnClickListener
-        ): SystemDialog.Builder {
+        ): Builder {
             mPositiveListener = positiveListener
             mNegativeListener = negativeListener
             return this

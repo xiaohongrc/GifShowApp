@@ -7,25 +7,17 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.hongenit.gifshowapp.R
+import com.hongenit.gifshowapp.UmengEvent
 import com.hongenit.gifshowapp.bean.WaterFallFeed
 import com.hongenit.gifshowapp.detail.FeedDetailActivity
-import com.hongenit.gifshowapp.events.LikeFeedEvent
-import com.hongenit.gifshowapp.network.NetworkConst
 import com.hongenit.gifshowapp.util.AndroidVersion
 import com.hongenit.gifshowapp.util.GlobalUtil
 import com.hongenit.gifshowapp.util.imageloader.MyImageLoader
-import org.greenrobot.eventbus.EventBus
 
 /**
  * 瀑布流列表Feed数据显示的适配器。
- * @author guolin
- * @since 2018/2/15
  */
 abstract class WaterFallGifAdapter<T : WaterFallFeed>(
     protected var activity: Activity, private val feedList: List<T>, private val imageWidth: Int,
@@ -84,6 +76,7 @@ abstract class WaterFallGifAdapter<T : WaterFallFeed>(
 //            }
             val coverImage = v.findViewById<ImageView>(R.id.feedCover)
             FeedDetailActivity.actionStart(activity, coverImage, feed)
+            UmengEvent.clickGif(feed.feedId)
         }
 //        holder.likesLayout.setOnClickListener {
 //            val position = holder.adapterPosition

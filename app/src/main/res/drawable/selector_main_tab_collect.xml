@@ -16,9 +16,9 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/ic_liked_selected_28dp" android:state_enabled="true"/>
-    <item android:drawable="@drawable/ic_liked_selected_28dp" android:state_checked="true"/>
-    <item android:drawable="@drawable/ic_liked_selected_28dp" android:state_selected="true"/>
-    <item android:drawable="@drawable/ic_like_normal_28dp"/>
+    <item android:drawable="@drawable/main_tab_like_select" android:state_enabled="true"/>
+    <item android:drawable="@drawable/main_tab_like_select" android:state_checked="true"/>
+    <item android:drawable="@drawable/main_tab_like_select" android:state_selected="true"/>
+    <item android:drawable="@drawable/main_tab_like_normal"/>
 
 </selector>

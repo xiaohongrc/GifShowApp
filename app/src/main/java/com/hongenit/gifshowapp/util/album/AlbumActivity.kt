@@ -16,8 +16,6 @@ import cropper.CropImage
 /**
  * 展示手机相册的Activity。
  *
- * @author guolin
- * @since 17/11/15
  */
 class AlbumActivity : BaseActivity() {
 

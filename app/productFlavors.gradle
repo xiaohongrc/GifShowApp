@@ -1,0 +1,72 @@
+android {
+    productFlavors {
+
+        //测试环境
+        env_test {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "false"
+            manifestPlaceholders = [channelName: "debug_test"]
+        }
+
+
+        //正式服发版包Google渠道
+        google {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "google"]
+        }
+
+        //正式服发版包tencent渠道
+        tencent {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "tencent"]
+        }
+
+        //正式服发版包xiaomi渠道
+        xiaomi {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "xiaomi"]
+        }
+
+        //正式服发版包baidu渠道
+        baidu {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "baidu"]
+        }
+
+        //正式服阿里渠道
+        ali {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "ali"]
+        }
+
+        //正式服安智渠道
+        anzhi {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "anzhi"]
+        }
+
+        //正式服历趣渠道
+        liqu {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "liqu"]
+        }
+
+
+        // 360
+        _360 {
+            /*是否正式服地址*/
+            buildConfigField "boolean", "RELEASE", "true"
+            manifestPlaceholders = [channelName: "_360"]
+        }
+
+    }
+
+
+}

@@ -4,9 +4,12 @@
         package="com.hongenit.gifshowapp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERAREQUEST_INSTALL_PACKAGES" />
+
 
     <application
             android:name="com.hongenit.gifshowapp.MyApp"
@@ -60,6 +63,12 @@
                 android:name="com.hongenit.gifshowapp.util.imageloader.glide.OkHttpLibraryGlideModule"
                 android:value="AppGlideModule" />
 
+        <meta-data
+                android:name="UMENG_APPKEY"
+                android:value="@string/umeng_key" />
+        <meta-data
+                android:name="UMENG_CHANNEL"
+                android:value="${channelName}" />
 
     </application>
 

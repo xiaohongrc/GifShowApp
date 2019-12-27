@@ -9,8 +9,6 @@ import org.greenrobot.eventbus.EventBus
 /**
  * 获取当前登录用户信息的工具类。
  *
- * @author guolin
- * @since 17/3/10
  */
 object UserModel {
 

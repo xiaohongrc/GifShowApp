@@ -150,6 +150,7 @@ open class BaseFeed : Model(), Parcelable {
                 feed.fsize = source.readLong()
                 feed.likesCount = source.readInt()
                 feed.isLikedAlready = source.readInt() == 1
+                feed.commentsCount = source.readInt()
                 return feed
             }
 

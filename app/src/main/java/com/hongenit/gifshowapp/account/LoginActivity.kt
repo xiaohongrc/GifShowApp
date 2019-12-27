@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.hongenit.gifshowapp.BaseActivity
 import com.hongenit.gifshowapp.R
+import com.hongenit.gifshowapp.UmengEvent
 import com.hongenit.gifshowapp.util.GlobalUtil
 import com.hongenit.gifshowapp.util.SharedPrefConst
 import com.hongenit.gifshowapp.util.SharedUtil
@@ -45,6 +46,7 @@ class LoginActivity : BaseActivity() {
 
 
     fun showSignIn() {
+        UmengEvent.showSignIn()
         val transaction = supportFragmentManager.beginTransaction()
         if (mSignInFragment == null) {
             mSignInFragment = SignInFragment()
@@ -62,6 +64,7 @@ class LoginActivity : BaseActivity() {
 
     // 显示注册页面。
     fun showSignUp() {
+        UmengEvent.showSignUp()
         val transaction = supportFragmentManager.beginTransaction()
         if (mSignUpFragment == null) {
             mSignUpFragment = SignUpFragment()

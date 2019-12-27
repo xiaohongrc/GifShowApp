@@ -21,8 +21,6 @@ import java.util.*
 /**
  * 相册界面，可以在这里选择图片。
  *
- * @author guolin
- * @since 17/3/20
  */
 open class AlbumFragment : BaseFragment() {
 

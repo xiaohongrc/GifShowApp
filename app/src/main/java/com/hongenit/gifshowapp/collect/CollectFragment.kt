@@ -231,7 +231,6 @@ class CollectFragment : BaseGifsFragment(), LoadDataListener {
                         getString(R.string.sign_in),
                         View.OnClickListener { v ->
                             LoginActivity.actionStart(activity)
-                            activity.finish()
                         })
                     adapter.notifyDataSetChanged()
                     loadFinished()

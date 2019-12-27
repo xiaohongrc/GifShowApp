@@ -9,9 +9,6 @@ import com.hongenit.gifshowapp.util.UserModel
 
 /**
  * 闪屏Activity界面，在这里进行程序初始化操作。
- *
- * @author guolin
- * @since 17/2/16
  */
 class SplashActivity : BaseActivity() {
 

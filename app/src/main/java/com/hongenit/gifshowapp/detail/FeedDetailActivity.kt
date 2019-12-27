@@ -22,9 +22,12 @@ import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
 import com.hongenit.gifshowapp.BaseActivity
 import com.hongenit.gifshowapp.GlobalParam
 import com.hongenit.gifshowapp.R
+import com.hongenit.gifshowapp.UmengEvent
 import com.hongenit.gifshowapp.account.LoginActivity
 import com.hongenit.gifshowapp.bean.WaterFallFeed
 import com.hongenit.gifshowapp.collect.CollectGifResponse
@@ -32,6 +35,7 @@ import com.hongenit.gifshowapp.comment.Comment
 import com.hongenit.gifshowapp.events.DeleteFeedEvent
 import com.hongenit.gifshowapp.events.LikeFeedEvent
 import com.hongenit.gifshowapp.events.MessageEvent
+import com.hongenit.gifshowapp.extension.logDebug
 import com.hongenit.gifshowapp.extension.logWarn
 import com.hongenit.gifshowapp.extension.showToast
 import com.hongenit.gifshowapp.extension.showToastOnUiThread
@@ -144,6 +148,49 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
 //            loopForeverLast = loopForever
 //            gifPlaySpeedLast = gifPlaySpeed
 //        }
+
+
+        loadAdView()
+    }
+
+
+    private fun loadAdView() {
+        if (System.currentTimeMillis() < 1559357152000L) {
+            logDebug("return ad")
+            return
+        }
+        val adRequest = AdRequest.Builder().build()
+        logDebug("loadAdView")
+        adViewDetail.loadAd(adRequest)
+        adViewDetail.adListener = object : AdListener() {
+            override fun onAdImpression() {
+                super.onAdImpression()
+            }
+
+            override fun onAdLeftApplication() {
+                super.onAdLeftApplication()
+            }
+
+            override fun onAdClicked() {
+                super.onAdClicked()
+            }
+
+            override fun onAdFailedToLoad(p0: Int) {
+                super.onAdFailedToLoad(p0)
+            }
+
+            override fun onAdClosed() {
+                super.onAdClosed()
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+            }
+        }
     }
 
     override fun onClick(view: View) {
@@ -173,6 +220,7 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
                     showToast(getString(R.string.unable_to_share_without_sdcard))
                 } else {
                     val gifCacheFile = GlideUtil.getCacheFile(mFeed.gif)
+                    UmengEvent.clickShare(mFeed.feedId)
                     if (gifCacheFile != null) {
                         ShareDialogFragment().showDialog(this, gifCacheFile.path)
                     } else {
@@ -215,6 +263,7 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
 //        }
         if (loadFeed()) {
             setupToolbar()
+            setupToolbarIcon()
             title = ""
 
             calculateImageSize()
@@ -278,7 +327,6 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
                     calculateFabPosition()
                 }
             })
-//            MobclickAgent.onEvent(this, "10003")
         } else {
             finish()
         }
@@ -351,6 +399,7 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
         feedContentLayout = detailInfo.findViewById(R.id.feedContentLayout)
         val commentLayout = detailInfo.findViewById<LinearLayout>(R.id.commentLayout)
         val feedContent = detailInfo.findViewById<TextView>(R.id.feedContent)
+        val commentsCount = detailInfo.findViewById<TextView>(R.id.commentsCount)
 
         val viewStub: ViewStub? = if (isCurrentUserPost) {
             detailInfo.findViewById(R.id.feedDetailMe)
@@ -393,6 +442,7 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
 
         spacingView.layoutParams.height = targetImgHeight
         likes.isClickable = false
+        // 展示赞数
         likesText.text =
             String.format(
                 getString(R.string.number_likes),
@@ -405,6 +455,11 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
             detailRecyclerView.smoothScrollToPosition(adapter.itemCount - 1)
             adapter.showSoftKeyboard()
         }
+        // 展示评论数量
+        commentsCount.text = String.format(
+            getString(R.string.comment),
+            GlobalUtil.getConvertedNumber(mFeed.commentsCount)
+        )
 
         likeAnimView?.setImageAssetsFolder("assets")
         likeAnimView?.setAnimation("like1.json")
@@ -428,7 +483,6 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
             if (UserModel.isLogin()) {
                 likeFeed()
             } else {
-
                 val dialogBtnListener =
                     DialogInterface.OnClickListener { dialog, which ->
                         when (which) {
@@ -495,8 +549,10 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
                     if (response.status == NetworkConst.STATUS_OK) {
                         if (response.collect) {
                             showToast(getString(R.string.collect_succeed))
+                            UmengEvent.collectGif(mFeed.feedId)
                         } else {
                             showToast(getString(R.string.uncollect_succeed))
+                            UmengEvent.unCollectGif(mFeed.feedId)
                         }
                     }
                 }
@@ -591,14 +647,13 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
 
 
         mGifUrl = gifUrl
-        println("gifUrl = $gifUrl")
+        logDebug("gifUrl = $gifUrl")
 
         gifFrontLayout.visibility = View.VISIBLE
         loadingLottieView.playAnimation()
 
         ProgressInterceptor.addListener(gifUrl, object : ProgressListener {
             override fun onProgress(progress: Int) {
-                println("progres  =$progress")
 //                gifProgressView.setProgress(progress)
             }
         })
@@ -773,6 +828,18 @@ class FeedDetailActivity : BaseActivity(), View.OnClickListener {
                 activity.startActivity(intent)
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun setupToolbarIcon() {
+        val actionBar = supportActionBar
+        actionBar?.setHomeAsUpIndicator(R.drawable.detail_back)
     }
 
 

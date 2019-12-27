@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tool="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_page">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="251dp"
+                    android:background="@drawable/bg_gradient_me" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg_white_triangle" />
+
+
+            <ImageView
+                    android:id="@+id/ivEditInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_settings" />
+
+        </FrameLayout>
+
+        <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="120dp"
+                android:background="@android:color/white"
+                android:foreground="@drawable/common_button_press_selector"
+                android:gravity="center"
+                android:text="@string/logout"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp">
+
+
+        <TextView
+                android:id="@+id/tvNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:text="Mathilda Simpsonsc"
+                android:textColor="#ff1c2d42"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/selector_bg_gender_age"
+                android:padding="5dp"
+                android:visibility="gone">
+
+            <ImageView
+                    android:id="@+id/ivGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/profile_female" />
+
+            <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="20"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/tvSelfIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="12345678901234567890123456789012345678901234567890123456789012345678901234567890"
+                android:textColor="@color/text_primary_dark"
+                android:textSize="16sp" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <FrameLayout
+            android:layout_width="@dimen/head_icon_size"
+            android:layout_height="@dimen/head_icon_size"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:elevation="2dp">
+
+        <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="@dimen/head_icon_size"
+                android:layout_height="@dimen/head_icon_size" />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fg_avatar_circle" />
+
+
+    </FrameLayout>
+
+
+</FrameLayout>

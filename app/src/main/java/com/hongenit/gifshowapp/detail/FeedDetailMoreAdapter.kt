@@ -3,17 +3,15 @@ package com.hongenit.gifshowapp.detail
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SimpleItemAnimator
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.hongenit.gifshowapp.GlobalParam
 import com.hongenit.gifshowapp.R
 import com.hongenit.gifshowapp.bean.BaseFeed
 import com.hongenit.gifshowapp.comment.Comment
+import com.hongenit.gifshowapp.comment.HotCommentsAdapter
 import com.hongenit.gifshowapp.comment.PostCommentResponse
 import com.hongenit.gifshowapp.events.PostCommentEvent
 import com.hongenit.gifshowapp.extension.logWarn
@@ -24,7 +22,6 @@ import com.hongenit.gifshowapp.network.response.ResponseHandler
 import com.hongenit.gifshowapp.util.DateUtil
 import com.hongenit.gifshowapp.util.GlobalUtil
 import com.hongenit.gifshowapp.util.UserModel
-import com.hongenit.gifshowapp.comment.HotCommentsAdapter
 import org.greenrobot.eventbus.EventBus
 import java.util.*
 
@@ -65,12 +62,14 @@ class FeedDetailMoreAdapter(
     }
 
     private fun createLoadingCommentsHolder(parent: ViewGroup): SimpleViewHolder {
-        val loadingView = LayoutInflater.from(activity).inflate(R.layout.loading_comments, parent, false)
+        val loadingView =
+            LayoutInflater.from(activity).inflate(R.layout.loading_comments, parent, false)
         return SimpleViewHolder(loadingView)
     }
 
     private fun createHotCommentsHolder(parent: ViewGroup): SimpleViewHolder {
-        val hotCommentsView = LayoutInflater.from(activity).inflate(R.layout.top_comments, parent, false)
+        val hotCommentsView =
+            LayoutInflater.from(activity).inflate(R.layout.top_comments, parent, false)
         hotComments?.let { it ->
             val recyclerView = hotCommentsView.findViewById<RecyclerView>(R.id.recyclerView)
             recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -82,7 +81,8 @@ class FeedDetailMoreAdapter(
     }
 
     private fun createNoCommentHolder(parent: ViewGroup): SimpleViewHolder {
-        val noCommentView = LayoutInflater.from(activity).inflate(R.layout.no_comment, parent, false)
+        val noCommentView =
+            LayoutInflater.from(activity).inflate(R.layout.no_comment, parent, false)
         val noCommentText = noCommentView.findViewById<TextView>(R.id.noCommentText)
         if (commentCount == -2) {
             noCommentText.text = GlobalUtil.getString(R.string.your_network_bad_comment_load_failed)
@@ -91,31 +91,38 @@ class FeedDetailMoreAdapter(
     }
 
     private fun createEnterCommentHolder(parent: ViewGroup): SimpleViewHolder {
-        val enterCommentView = LayoutInflater.from(activity).inflate(R.layout.enter_comment, parent, false)
-        commentEdit = enterCommentView.findViewById(R.id.commentEdit)
-        avatarMe = enterCommentView.findViewById(R.id.avatarMe)
-        postComment = enterCommentView.findViewById(R.id.postComment)
-
-        Glide.with(activity)
-            .load(UserModel.getSignInUser().avatar)
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-            .placeholder(R.drawable.loading_bg_circle)
-            .error(R.drawable.avatar_default)
-            .into(avatarMe!!)
-        postComment!!.setOnClickListener {
-            val content = commentEdit!!.text.toString().trim()
-            if (TextUtils.isEmpty(content)) {
-                showToast(GlobalUtil.getString(R.string.please_enter_comment))
-            } else {
-                postComment(content)
-                commentEdit!!.isEnabled = false
-                postComment!!.isEnabled = false
-                activity.hideSoftKeyboard()
-                enterCommentView.requestFocus()
-            }
-        }
+        val enterCommentView =
+            LayoutInflater.from(activity).inflate(R.layout.enter_comment_temp_holder, parent, false)
         return SimpleViewHolder(enterCommentView)
     }
+
+
+//    private fun createEnterCommentHolder(parent: ViewGroup): SimpleViewHolder {
+//        val enterCommentView = LayoutInflater.from(activity).inflate(R.layout.enter_comment, parent, false)
+//        commentEdit = enterCommentView.findViewById(R.id.commentEdit)
+//        avatarMe = enterCommentView.findViewById(R.id.avatarMe)
+//        postComment = enterCommentView.findViewById(R.id.postComment)
+//
+//        Glide.with(activity)
+//            .load(UserModel.getSignInUser().avatar)
+//            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+//            .placeholder(R.drawable.loading_bg_circle)
+//            .error(R.drawable.avatar_default)
+//            .into(avatarMe!!)
+//        postComment!!.setOnClickListener {
+//            val content = commentEdit!!.text.toString().trim()
+//            if (TextUtils.isEmpty(content)) {
+//                showToast(GlobalUtil.getString(R.string.please_enter_comment))
+//            } else {
+//                postComment(content)
+//                commentEdit!!.isEnabled = false
+//                postComment!!.isEnabled = false
+//                activity.hideSoftKeyboard()
+//                enterCommentView.requestFocus()
+//            }
+//        }
+//        return SimpleViewHolder(enterCommentView)
+//    }
 
     override fun onBindViewHolder(holder: SimpleViewHolder, position: Int) {}
 
@@ -250,20 +257,31 @@ class FeedDetailMoreAdapter(
                         postCommentEvent.commentId = postComment.commentId
                         postCommentEvent.feedId = feed.feedId
                         EventBus.getDefault().post(postCommentEvent)
-//                        MobclickAgent.onEvent(activity, "10004")
                     } else if (status == 10402) {
                         val timeLeft = baseResponse.msg.toLong()
                         if (DateUtil.isBlockedForever(timeLeft)) {
-                            showToast(GlobalUtil.getString(R.string.unable_to_post_comment_forever), Toast.LENGTH_LONG)
+                            showToast(
+                                GlobalUtil.getString(R.string.unable_to_post_comment_forever),
+                                Toast.LENGTH_LONG
+                            )
                         } else {
                             val tip = DateUtil.getTimeLeftTip(timeLeft)
                             showToast(
-                                String.format(GlobalUtil.getString(R.string.unable_to_post_comment), tip),
+                                String.format(
+                                    GlobalUtil.getString(R.string.unable_to_post_comment),
+                                    tip
+                                ),
                                 Toast.LENGTH_LONG
                             )
                         }
                     } else {
-                        logWarn(TAG, "Post comment failed. " + GlobalUtil.getResponseClue(status, baseResponse.msg))
+                        logWarn(
+                            TAG,
+                            "Post comment failed. " + GlobalUtil.getResponseClue(
+                                status,
+                                baseResponse.msg
+                            )
+                        )
                         showToast(GlobalUtil.getString(R.string.post_comment_failed))
                     }
                 }

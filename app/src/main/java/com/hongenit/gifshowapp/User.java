@@ -32,7 +32,7 @@ public class User {
     private int followers_count;
     private int feeds_count;
     private boolean is_following;
-    private String description ="";
+    private String description = "";
     private int gender;
     private String birthday;
     private String avatar;
@@ -49,6 +49,9 @@ public class User {
     }
 
     public String getNickname() {
+        if (nickname == null) {
+            nickname = "";
+        }
         return nickname;
     }
 
@@ -89,6 +92,9 @@ public class User {
     }
 
     public String getDescription() {
+        if (description == null) {
+            description = "";
+        }
         return description;
     }
 

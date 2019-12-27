@@ -21,6 +21,7 @@ import com.hongenit.gifshowapp.callback.RequestLifecycle
 import com.hongenit.gifshowapp.events.ForceToLoginEvent
 import com.hongenit.gifshowapp.events.MessageEvent
 import com.hongenit.gifshowapp.extension.logWarn
+import com.umeng.analytics.MobclickAgent
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.ArrayList
@@ -281,7 +282,7 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
     }
 
 
-    protected fun setupToolbar() {
+    fun setupToolbar() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
@@ -304,13 +305,13 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
     override fun onResume() {
         super.onResume()
         isActive = true
-//        MobclickAgent.onResume(this)
+        MobclickAgent.onResume(this)
     }
 
     override fun onPause() {
         super.onPause()
         isActive = false
-//        MobclickAgent.onPause(this)
+        MobclickAgent.onPause(this)
     }
 
 

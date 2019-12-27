@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/colorPrimary">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
 
     <TextView
@@ -13,69 +13,65 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:text="@string/sign_in"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="28sp"
-    />
+            android:textStyle="bold" />
 
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginTop="133dp"
-            android:padding="35dp"
             android:background="@drawable/bg_account_login"
-    >
+            android:orientation="vertical"
+            android:padding="35dp">
 
 
         <!--账号-->
         <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:theme="@style/CustomAppTheme_textInputLayout"
                 android:layout_height="wrap_content"
+                android:theme="@style/CustomAppTheme_textInputLayout"
                 app:errorTextAppearance="@style/EditTextErrorAppearance">
 
             <android.support.design.widget.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Account"
-                    android:textColor="@color/text_account_info"
+                    android:hint="@string/hint_account"
                     android:imeOptions="actionGo"
                     android:inputType="textEmailAddress"
                     android:maxLength="20"
                     android:maxLines="1"
-            />
+                    android:textColor="@color/text_account_info" />
 
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-        >
+                android:layout_marginTop="10dp">
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:theme="@style/CustomAppTheme_textInputLayout"
                     android:orientation="vertical"
+                    android:theme="@style/CustomAppTheme_textInputLayout"
                     app:errorTextAppearance="@style/EditTextErrorAppearance">
 
                 <android.support.design.widget.TextInputEditText
                         android:id="@+id/etPwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Password"
+                        android:hint="@string/hint_pwd"
                         android:imeActionLabel="@string/sign_in"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
-                        android:textColorHint="#44bb0b"
                         android:maxLength="20"
                         android:maxLines="1"
-                        android:textColor="@color/text_account_info"/>
+                        android:textColor="@color/text_account_info"
+                        android:textColorHint="#44bb0b" />
 
 
             </android.support.design.widget.TextInputLayout>
@@ -87,11 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
+                android:background="@drawable/phone_login_button_bg"
                 android:text="@string/sign_in"
-                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:background="@drawable/phone_login_button_bg"/>
+                android:textStyle="bold" />
 
         <TextView
                 android:id="@+id/tvSignUp"
@@ -99,13 +95,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="35dp"
-                android:textSize="16sp"
+                android:layout_marginEnd="20dp"
                 android:padding="10dp"
                 android:text="@string/sign_up"
-                android:layout_marginEnd="20dp"
                 android:textColor="@color/text_account_info"
-                android:visibility="visible"
-        />
+                android:textSize="16sp"
+                android:visibility="visible" />
 
 
     </LinearLayout>

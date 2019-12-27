@@ -17,10 +17,16 @@ import com.hongenit.gifshowapp.util.GlobalUtil
  * Feed详情界面的热门评论所使用的adapter。
  *
  */
-internal class HotCommentsAdapter(private val activity: Activity, private val comments: MutableList<Comment>) :
+internal class HotCommentsAdapter(
+    private val activity: Activity,
+    private val comments: MutableList<Comment>
+) :
     RecyclerView.Adapter<CommentsAdapter.CommentHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentsAdapter.CommentHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CommentsAdapter.CommentHolder {
         val view = LayoutInflater.from(activity).inflate(R.layout.hot_comment_item, parent, false)
         val holder = CommentsAdapter.CommentHolder(view)
         val avatar = view.findViewById<ImageView>(R.id.avatar)

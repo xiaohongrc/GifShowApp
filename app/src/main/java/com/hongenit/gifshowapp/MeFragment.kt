@@ -47,8 +47,10 @@ class MeFragment : BaseFragment() {
 
     private fun initView() {
         ivAvatar.setOnClickListener {
-            activity?.let {
-                ModifyUserInfoActivity.actionStart(it)
+            if (UserModel.isLogin()) {
+                activity?.let {
+                    ModifyUserInfoActivity.actionStart(it)
+                }
             }
         }
         ivEditInfo.setOnClickListener {
@@ -74,7 +76,6 @@ class MeFragment : BaseFragment() {
     private fun forwardAccountPage() {
         activity?.let {
             LoginActivity.actionStart(it)
-            it.finish()
         }
     }
 
@@ -108,9 +109,11 @@ class MeFragment : BaseFragment() {
                 description = getString(R.string.description_is_empty)
             }
             loginBtnText = getString(R.string.logout)
+            ivEditInfo.visibility = View.VISIBLE
         } else {
             description = getString(R.string.login_tip)
             loginBtnText = getString(R.string.sign_in)
+            ivEditInfo.visibility = View.GONE
         }
         tv_logout.text = loginBtnText
         tvSelfIntro.text = description
@@ -178,28 +181,5 @@ class MeFragment : BaseFragment() {
     }
 
 
-//    override fun onImageLoaded(imageUri: Uri?) {
-//        if (imageUri != null) {
-//            context?.let {
-//                val path = FileUtil.getContentUriRealDiskPath(it, imageUri)
-//                if (TextUtils.isEmpty(path)) {
-//                    onImageLoadFailed()
-//                } else {
-//                    if (mImageRequest == REQUEST_ICON) {
-////                        updateIcon(path)
-//                        println("---path = $path")
-//                    }
-//                }
-//            }
-//        } else {
-//            onImageLoadFailed()
-//        }
-//
-//    }
-//
-//    override fun onImageLoadFailed() {
-//        showToast(getString(R.string.image_load_failed), Toast.LENGTH_SHORT)
-//    }
-//
 
 }

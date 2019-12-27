@@ -1,19 +1,26 @@
 <resources>
 
-    <string name="app_name">Funny Emoji</string>
+    <!--do not need translate-->
+    <string name="umeng_key" translatable="false">5d9d8dc70cafb28406000377</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-1616641096587052~7201013613</string>
+
+    <!--do not need translate-->
+
+    <string name="app_name">Gif hub</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="loading">Loading…</string>
     <string name="setting_nick_name">Setting nickname</string>
     <string name="confirm">Confirm</string>
-    <string name="ok">OK</string>
-    <string name="error_account_pwd">Account or password is incorrector</string>
+    <string name="error_account_pwd">Account or password is incorrect</string>
     <string name="network_error">Network error</string>
     <string name="compose">post gif</string>
     <string name="user_home">My profile</string>
     <string name="recommend_following">Recommend following</string>
     <string name="draft_box">Draft</string>
     <string name="settings">Settings</string>
+    <string name="hint_account">Account</string>
+    <string name="hint_pwd">password</string>
 
 
     <string name="post">Post</string>
@@ -31,15 +38,19 @@
     <string name="fetch_data_failed">Fetch data failed</string>
     <string name="unknown_error">unknow error</string>
 
-    <string name="login_status_expired">登录状态已过期</string>
+    <string name="login_status_expired">Login status expired</string>
+
+
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
     <!-- 网络 -->
-    <string name="network_connect_error">网络连接异常</string>
-    <string name="network_connect_timeout">网络连接超时</string>
-    <string name="no_route_to_host">无法连接到服务器</string>
-    <string name="network_response_code_error">服务器状态码异常：</string>
-    <string name="bad_network_view_tip">您的网络不给力，点击屏幕可重新加载</string>
-    <string name="load_failed_click_to_reload">加载失败，点击可重新加载</string>
+    <string name="network_connect_error">Network connect error</string>
+    <string name="network_connect_timeout">Network connect timeout</string>
+    <string name="no_route_to_host">No route to host</string>
+    <string name="network_response_code_error">Network response code error：</string>
+    <string name="bad_network_view_tip">Bad network view tip</string>
+    <string name="load_failed_click_to_reload">Load failed click to reload</string>
 
     <string name="title_loop_gif_play">循环播放GIF</string>
     <string name="summary_loop_gif_play">GIF图播放结束后自动重头播放</string>
@@ -51,6 +62,9 @@
     <string name="transition_feed_detail" translatable="false">transition_feed_detail</string>
     <string name="transition_feed_detail_bg" translatable="false">transition_feed_detail_bg</string>
     <string name="transition_feed_detail_image_bg" translatable="false">transition_feed_detail_image_bg</string>
+
+
+
     <!-- 全局 -->
     <string name="world">世界</string>
     <string name="follow">关注</string>
@@ -59,8 +73,7 @@
     <string name="send">发 送</string>
     <string name="gif_format_error">GIF图片格式不正确</string>
     <string name="no_more_content">没有更多内容了</string>
-    <string name="save">save</string>
-    <string name="cancel">取消</string>
+
     <string name="give_up">舍弃</string>
     <string name="ignore">忽略</string>
     <string name="delete">删除</string>
@@ -70,9 +83,8 @@
     <string name="forward">继续</string>
     <string name="draft">草稿</string>
     <string name="search">搜索</string>
-    <string name="take_photo">拍照</string>
-    <string name="your_album">你的相册</string>
-    <string name="press_again_to_exit">再按一次退出%1$s</string>
+    <string name="take_photo">Take photo</string>
+    <string name="your_album">Your album</string>
     <string name="currently_not_supported">该功能即将开放，敬请期待</string>
     <string name="delete_failed">删除失败</string>
     <string name="user_info_status_abnormal">当前登录状态存在异常</string>
@@ -83,13 +95,12 @@
 
 
     <!-- 登录与注册 -->
-    <string name="qq_login">QQ登录</string>
-    <string name="wechat_login">微信登录</string>
-    <string name="weibo_login">微博登录</string>
-    <string name="guest_login">游客登录</string>
-    <string name="modify_profile">修改个人信息</string>
-    <string name="share_fun_with_world">乐趣就要和世界分享</string>
-    <string name="register">注册</string>
+    <string name="qq_login">QQ Login</string>
+    <string name="wechat_login">Wechat login</string>
+    <string name="weibo_login">Weibo login</string>
+    <string name="guest_login">Guest login</string>
+    <string name="modify_profile">Edit personal profile</string>
+
     <string name="fetch_vcode">获取验证码</string>
     <string name="fun_is_coming">好玩的就要来了</string>
     <string name="select_nickname_please">请选择一个昵称</string>
@@ -136,10 +147,10 @@
     <string name="are_you_sure_to_clean_draft_box">确定要清空草稿箱吗？</string>
     <string name="you_are_playing_big_gif_with_roaming">您正在使用手机流量播放较大GIF图，是否继续？</string>
     <string name="forward_and_do_not_alert_again">继续并且不再提醒</string>
-    <string name="favorite">点赞</string>
-    <string name="number_likes">%1$s 赞</string>
-    <string name="refeed">转发</string>
-    <string name="comment">评论</string>
+    <string name="favorite">Like</string>
+    <string name="number_likes">%1$s likes</string>
+    <string name="refeed">Resend</string>
+    <string name="comment">Comment</string>
     <string name="follow_failed">关注失败</string>
     <string name="follow_too_many">您最多只能关注500名用户</string>
     <string name="follow_all_success">全部关注成功</string>
@@ -147,10 +158,10 @@
     <string name="unfollow_confirm">您确定不再关注此用户吗？</string>
     <string name="delete_feed_confirm">您确定删除此条分享吗？</string>
     <string name="ref_feed_deleted">原分享已被删除</string>
-    <string name="save_to_phone">保存到手机</string>
+    <string name="save_to_phone">Save to phone</string>
     <string name="must_agree_permission_to_save">必须同意权限才能保存</string>
-    <string name="save_failed">保存失败</string>
-    <string name="save_gif_success">GIF图已保存到：\nsdcard/quxiang/趣享GIF/%1$s</string>
+    <string name="save_failed">Save failed</string>
+    <string name="save_gif_success">GIF had save to:\nsdcard/gifShow/%1$s</string>
     <string name="save_gif_play_control_modify_or_not">是否保存对GIF播放控制的修改？</string>
 
     <!-- 发布feed -->
@@ -216,10 +227,10 @@
     <string name="feeds_and_followers_count">发布&#160;&#160;%1$s &#160;&#160;&#160;&#160; 粉丝&#160;&#160;%2$s</string>
 
     <!-- 评论 -->
-    <string name="all_comments">所有评论</string>
-    <string name="load_comments_failed">评论加载失败</string>
-    <string name="no_comment">暂无评论，赶快来抢沙发！</string>
-    <string name="hot_comment">热门评论</string>
+    <string name="all_comments">All comment</string>
+    <string name="load_comments_failed">Load comments fail</string>
+    <string name="no_comment">No comments</string>
+    <string name="hot_comment">Hot comment</string>
     <string name="read_all_comments">查看全部评论</string>
     <string name="post_comment_success">发表评论成功</string>
     <string name="post_comment_failed">发表评论失败</string>
@@ -333,18 +344,18 @@
     <string name="unable_to_post_comment_forever">您的账号涉嫌严重违规，已被永久禁止评论</string>
 
     <!-- 分享 -->
-    <string name="share_to">分享到</string>
-    <string name="wechat">微信</string>
-    <string name="wechat_memory">微信朋友圈</string>
+    <string name="share_to">Share to</string>
+    <string name="wechat">Wechat</string>
+    <string name="wechat_memory">Moments</string>
     <string name="qq_friends">QQ</string>
-    <string name="qq_zone">QQ空间</string>
-    <string name="weibo">微博</string>
-    <string name="unable_to_share_before_gif_loaded">图片加载完成前无法分享</string>
-    <string name="unable_to_save_before_gif_loaded">图片加载完成前不能保存</string>
-    <string name="unable_to_share_without_sdcard">您的设备没有SD卡，无法完成分享</string>
-    <string name="share_unknown_error">分享出现未知异常</string>
-    <string name="gif_file_not_exist">GIF文件不存在</string>
-    <string name="must_agree_permission_to_share">必须同意权限才能分享</string>
+    <string name="qq_zone">QQ Zone</string>
+    <string name="weibo">Weibo</string>
+    <string name="unable_to_share_before_gif_loaded">Unable to share before gif loaded</string>
+    <string name="unable_to_save_before_gif_loaded">Unable to save before gif loaded</string>
+    <string name="unable_to_share_without_sdcard">Unable to share without sdcard</string>
+    <string name="share_unknown_error">Unknown error when share</string>
+    <string name="gif_file_not_exist">Gif file not exist</string>
+    <string name="must_agree_permission_to_share">Must agree permission to share</string>
 
 
     <string name="description_is_empty">You haven\'t write description</string>

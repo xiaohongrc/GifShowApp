@@ -1,6 +1,7 @@
 package com.hongenit.gifshowapp.extension
 
 import android.util.Log
+import com.hongenit.gifshowapp.BuildConfig
 import com.hongenit.gifshowapp.GlobalParam
 
 /**
@@ -16,7 +17,7 @@ private const val ERROR = 5
 private const val NOTHING = 6
 
 //    private val level = VERBOSE;
-private val level = if (GlobalParam.isDebug) VERBOSE else WARN
+private val level = if (BuildConfig.RELEASE) WARN else VERBOSE
 
 fun Any.logVerbose(msg: String?) {
     if (level <= VERBOSE) {

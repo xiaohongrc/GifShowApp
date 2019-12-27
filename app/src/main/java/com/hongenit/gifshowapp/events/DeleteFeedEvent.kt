@@ -3,8 +3,6 @@ package com.hongenit.gifshowapp.events
 /**
  * 删除Feed的事件消息。
  *
- * @author guolin
- * @since 17/9/9
  */
 class DeleteFeedEvent : MessageEvent() {
 

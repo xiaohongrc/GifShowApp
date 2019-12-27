@@ -38,6 +38,7 @@
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:theme="@style/MaterialButton"
+                android:shadowRadius="6"
                 tools:text="@string/to_collect"/>
 
     </LinearLayout>

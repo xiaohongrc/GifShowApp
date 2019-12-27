@@ -185,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginTop="@dimen/status_bar_height"
-            >
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <TextView
                 android:id="@+id/save"
@@ -196,7 +196,7 @@
                 android:layout_marginRight="6dp"
                 android:gravity="center"
                 android:text="@string/save"
-                android:textColor="@color/text_primary_dark"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>

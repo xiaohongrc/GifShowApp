@@ -3,8 +3,6 @@ package com.hongenit.gifshowapp.network
 /**
  * 服务器身份验证相关的工具类。
  *
- * @author guolin
- * @since 17/2/14
  */
 object AuthUtil {
 

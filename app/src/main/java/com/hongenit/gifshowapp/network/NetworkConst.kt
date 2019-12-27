@@ -1,37 +1,37 @@
 package com.hongenit.gifshowapp.network
 
+import com.hongenit.gifshowapp.BuildConfig
+
 /**
  * 网络通信模块的常量。
  *
- * @author guolin
- * @since 17/2/14
  */
 interface NetworkConst {
 
     companion object {
-        var isDebug = true
+        var isRelease = BuildConfig.RELEASE
 
         var BASE_URL = getBaseUrl()
 
         private fun getBaseUrl(): String {
-            return if (isDebug) BASE_URL_DEBUG else BASE_URL_FORMAL
+            return if (isRelease) BASE_URL_FORMAL else BASE_URL_DEBUG
         }
 
 
         // 存储头像的域名
-        const val DOMAIN_OF_AVATAR = "http://pw2p0ejhr.bkt.clouddn.com/"
+        const val DOMAIN_OF_AVATAR = "http://avatar.xiaohongchen.top/"
 
         const val SERVER_ADDR_HOME = "http://192.168.0.103:8080/"
 
         const val SERVER_ADDR_HOT_SPOT = "http://192.168.43.198:8080/"
 
-        private const val SERVER_ADDR_DEBUG = "http://192.168.3.193:8080/"
+        private const val SERVER_ADDR_DEBUG = "http://192.168.3.85:8080/"
 
-        private const val BASE_URL_DEBUG = SERVER_ADDR_DEBUG + "gif_show_war_exploded/"
+        private const val BASE_URL_DEBUG = SERVER_ADDR_DEBUG + "gif_show/"
 
         const val SERVER_ADDR = "http://47.99.124.250:8080/"
 
-        private const val BASE_URL_FORMAL = "http://47.99.124.250:8080/gif_show-1.0-SNAPSHOT/"
+        private const val BASE_URL_FORMAL = "http://www.xiaohongchen.top:8080/gif_show/"
 
 
         const val ACCOUNT = "account"

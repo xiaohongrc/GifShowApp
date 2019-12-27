@@ -90,7 +90,7 @@
             android:layout_margin="34dp"
             android:background="@drawable/dialog_edit_remark_confirm_bg"
             android:gravity="center"
-            android:text="@string/ok"
+            android:text="@string/confirm"
             android:textColor="@color/white"
             android:textSize="16sp" />
 </LinearLayout>

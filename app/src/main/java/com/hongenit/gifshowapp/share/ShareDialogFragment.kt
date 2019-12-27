@@ -157,7 +157,7 @@ open class ShareDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun saveToSDCard() {
-        val dir = File(Environment.getExternalStorageDirectory().toString() + "/quxiang/趣享GIF")
+        val dir = File(Environment.getExternalStorageDirectory().toString() + "/gifShow")
         if (!dir.exists() && !dir.mkdirs()) {
             showToastOnUiThread(GlobalUtil.getString(R.string.save_failed))
             dismiss()
